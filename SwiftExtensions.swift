@@ -3,6 +3,68 @@
 //Created by Preston Harrison on 2/2/16
 //Copyright 2016 Inventionland, LLC. All Rights Reserved.
 
+/* Begin Examples */
+
+func example() {
+
+    //Mutating/evaluating arrays
+
+    var array = [1, 2, 3, 4, 5, 6]
+    array -= 1
+    
+    let greaterThanThree = array.evaluateAll { $0 > 3 } /* false */
+    let greaterThanOrEqualToOne = array.evaluateAll { $0 >= 1 } /* true */
+    
+    let field1 = UITextField()
+    let field2 = UITextField()
+    let field3 = UITextField()
+    
+    let fields = [field1, field2, field3]
+    fields.forAll { $0.resignFirstResponder }
+    
+    
+    //UISimplePicker
+    
+    let simplePicker = UISimplePickerView(frame: CGRect.zero, items: ["Hello", "World"])
+    simplePicker.selectionHandler = { row in
+    
+        print("Selected row: \(row)")
+    
+    }
+    
+    
+    //Int, Double
+    
+    let i = 4
+    let b: Double = i.doubleValue()
+    
+    i.times {
+    
+        print("hello") /* prints hello 4 times */
+    
+    }
+    
+    b.after {
+    
+         print("hello") /* prints hello after 4.0 seconds */
+    
+    }
+    
+    
+    //UIViewController
+    
+    let viewController = UIApplication.sharedApplication.keyWindow!.rootViewController!
+    
+    viewController.alert("Showing Alert", message: "Presenting UIAlertController of type Alert")
+    
+    /* show action sheet with image select options */
+    /* delegate must conform to protocol<UIImagePickerControllerDelegate, UINavigationControllerDelegate> */
+    viewController.presentImageSelectionOptions(delegate: viewController)
+
+}
+
+/* End Examples */
+
 func += (inout lhs: [AnyObject], rhs: AnyObject) {
 
     lhs.append(rhs)
@@ -260,13 +322,13 @@ extension Double {
         
     }
     
-    func i() -> Int {
+    func intValue() -> Int {
         
         return Int(self)
         
     }
     
-    func cg() -> CGFloat {
+    func CGValue() -> CGFloat {
         
         return CGFloat(self)
         
@@ -308,7 +370,7 @@ extension Int {
         
     }
     
-    func f() -> Double {
+    func doubleValue() -> Double {
         
         return Double(self)
         
@@ -336,7 +398,7 @@ extension UIViewController {
         
     }
     
-    func presentImagePickerOptions(delegate: protocol<UIImagePickerControllerDelegate, UINavigationControllerDelegate>) {
+    func presentImagePickerOptions(delegate del: protocol<UIImagePickerControllerDelegate, UINavigationControllerDelegate>) {
         
         let controller = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         
