@@ -398,7 +398,7 @@ extension UIViewController {
         
     }
     
-    func presentImagePickerOptions(delegate del: protocol<UIImagePickerControllerDelegate, UINavigationControllerDelegate>) {
+    func presentImageSelectionOptions(delegate del: protocol<UIImagePickerControllerDelegate, UINavigationControllerDelegate>) {
         
         let controller = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         
